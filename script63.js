@@ -1,48 +1,40 @@
-let employees=[];
+function calculateResult(){
 
-function addEmployee(){
-    let name=document.getElementById("name").value;
-    let empId=document.getElementById("empId").value;
-    let salary=parseFloat(document.getElementById("salary").value);
-    let dept=document.getElementById("dept").value;
-    if(name === "" || empId === "" || isNaN(salary) || dept === ""){
-        alert("please fill all the fields properly");
-        return;
+    const n=document.getElementById("subjects").value;
+    let i;
+    let total=0;
+    for(i=0;i<n;i++){
+
+        let x=parseFloat(prompt("Enter the subject no."+(i+1)))
+        total+=x;
+       }
+       let avg=total/n;
+       let grade;
+       if(avg>90){
+        grade="A+";
+       }
+        else if(avg>80){
+            grade="B";
+        }
+        else if(avg>70){
+            grade="c";
+        }
+        else if(avg>60){
+            grade="D";
+        }
+        else {
+            grade="FAIL";
+        }
+
+        let result;
+        if(avg>40){
+            result="PASS";
+        }
+        else{
+            result="FAIL";
+        }
+        
+
+        document.getElementById("result").innerHTML="Total Marks"+total+"</br>"+"Average marks"+avg(toFixed(2))+"</br>"+"Grade:"+grade+"</br>"+"Result"+result+"</br>";
     }
-    let employee= {
-        name: name,
-        id: empId,
-        salary: salary,
-        department: dept,
-    };
-    employees.push(employee);
-    alert("Employee Added Successfully!");
-    document.getElementById("name").value="";
-    document.getElementById("empId").value="";
-    document.getElementById("salary").value="";
-     document.getElementById("dept").value="";
-    
-    }
-
-function displayEmployees() {
-    let output= "<h3>All Employees</h3>";
-    employees.forEach((emp)=> {
-        output += `
-        Name: ${emp.name} |
-        Id: ${emp.id}  |
-        Salary: ${emp.salary} |
-        Dept: ${emp.department} <br>
-        `;
-    })
-}
-
-funtion filterSalary(){
-    let filtered=employees.filter((emp) => emp.salary > 50000);
-    let output= "<h3>Employees with Salary> Rs.50,000</h3>";
-    filtered.forEach((emp=>{
-        output+= `
-        Name: ${emp.name} |
-        Id: ${emp.id}  |`
-    }))
-}
 
